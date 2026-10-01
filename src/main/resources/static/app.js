@@ -95,11 +95,11 @@ async function loadStock() {
     const stock = await request("/blood-units");
 
     renderRows("stockTable", stock, [
-        "groupName", "availableUnits"
+        "group_name", "available_units"
     ]);
 
     document.getElementById("unitCount").textContent =
-        stock.reduce((sum, item) => sum + item.availableUnits, 0);
+        stock.reduce((sum, item) => sum + item.available_units, 0);
 }
 
 async function loadDonations() {
