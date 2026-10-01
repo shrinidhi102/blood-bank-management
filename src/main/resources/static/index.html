@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div>
+        <h1>🩸 Blood Bank Management</h1>
+        <p>Donors, donations and blood stock</p>
+    </div>
+</header>
+
+<main>
+    <section class="stats">
+        <article class="card">
+            <h3>Total Donors</h3>
+            <p id="donorCount">0</p>
+        </article>
+        <article class="card">
+            <h3>Total Available Units</h3>
+            <p id="unitCount">0</p>
+        </article>
+        <article class="card">
+            <h3>Total Donations</h3>
+            <p id="donationCount">0</p>
+        </article>
+    </section>
+
+    <section class="card">
+        <h2>Register Donor</h2>
+        <form id="donorForm">
+            <input name="name" placeholder="Full name" required maxlength="100">
+            <input name="age" type="number" placeholder="Age (18+)" min="18" required>
+            <select name="gender">
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            <input name="phone" placeholder="Phone" maxlength="15">
+            <select name="bloodGroupId" id="donorBloodGroup" required>
+                <option value="">Select blood group</option>
+            </select>
+            <button type="submit">Register Donor</button>
+        </form>
+        <p id="donorMessage" class="message"></p>
+    </section>
+
+    <section class="card">
+        <h2>Register Donation</h2>
+        <form id="donationForm">
+            <select name="donorId" id="donationDonor" required>
+                <option value="">Select donor</option>
+            </select>
+            <input name="quantityMl" type="number"
+                   value="450" min="1" required>
+            <input name="unitsDonated" type="number"
+                   value="1" min="1" required>
+            <input name="donationDate" type="date" required>
+            <button type="submit">Register Donation</button>
+        </form>
+        <p class="hint">Demo project only. Real donations require medical eligibility checks and screening.</p>
+        <p id="donationMessage" class="message"></p>
+    </section>
+
+    <section class="card">
+        <h2>Blood Stock</h2>
+        <button id="refreshButton" type="button">Refresh Stock</button>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>Blood Group</th><th>Available Units</th></tr>
+                </thead>
+                <tbody id="stockTable"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Donors</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Age</th>
+                    <th>Phone</th><th>Blood Group</th>
+                </tr>
+                </thead>
+                <tbody id="donorTable"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Donation History</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>Donor</th><th>Blood Group</th>
+                    <th>Quantity (ml)</th><th>Units</th><th>Date</th>
+                </tr>
+                </thead>
+                <tbody id="donationTable"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Below-Average Stock</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>Blood Group</th><th>Available Units</th></tr>
+                </thead>
+                <tbody id="reportTable"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
